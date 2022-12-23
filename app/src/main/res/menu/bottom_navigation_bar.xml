@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_timer"
+        android:id="@+id/page_search"
         android:enabled="true"
         android:icon="@null"
         android:title="검색"/>
     <item
-        android:id="@+id/page_stop_watch"
+        android:id="@+id/page_bookmark"
         android:enabled="true"
         android:icon="@null"
         android:title="즐겨찾기"/>

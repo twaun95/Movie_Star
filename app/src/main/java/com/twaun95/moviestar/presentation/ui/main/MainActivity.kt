@@ -6,6 +6,7 @@ import com.twaun95.moviestar.application.Logger
 import com.twaun95.moviestar.databinding.ActivityMainBinding
 import com.twaun95.moviestar.presentation.adapter.MovieViewPageAdapter
 import com.twaun95.moviestar.presentation.base.BaseActivity
+import com.twaun95.moviestar.presentation.model.Mode
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,9 +16,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun initView() {
         super.initView()
 
+        binding.viewModel = this.viewModel
+
         initViewPager()
         initBottomNavigation()
-        Logger.d(viewModel.test)
     }
 
     override fun setEvent() {
@@ -40,12 +42,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             itemIconTintList = null
             setOnItemSelectedListener { page ->
                 when(page.itemId) {
-                    R.id.page_timer -> {
+                    R.id.page_search -> {
                         binding.viewPager.setCurrentItem(0, false)
+                        viewModel.modeTest.postValue(Mode.SEARCH)
                         true
                     }
-                    R.id.page_stop_watch -> {
+                    R.id.page_bookmark -> {
                         binding.viewPager.setCurrentItem(1, false)
+                        viewModel.modeTest.postValue(Mode.BOOKMARK)
                         true
                     }
                     else -> { false }
