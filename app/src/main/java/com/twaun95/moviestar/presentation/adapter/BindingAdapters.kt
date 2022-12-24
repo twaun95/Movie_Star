@@ -21,6 +21,6 @@ fun setOnChangedMode(view: ToolBar, mode: Mode) {
 fun setOnClickSearch(view: ToolBar, viewModel: MainActivityViewModel) {
     view.searchButton.setOnClickListener {
         Logger.d("setOnClickSearch ${view.searchText.text}")
-        viewModel.searchMovie(view.searchText.text.toString())
+        viewModel.searchMovie(view.searchText.text.toString().trim())
     }
 }
