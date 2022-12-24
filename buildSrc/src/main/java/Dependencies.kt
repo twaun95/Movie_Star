@@ -13,6 +13,7 @@ object AndroidX {
     const val VIEW_MODEL                  = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
     const val FRAGMENT                    = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT}"
     const val SWIPE_LAYOUT                = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_LAYOUT}"
+    const val MULTI_DEX                   = "androidx.multidex:multidex:${Versions.MULTI_DEX}"
 }
 
 object Google {

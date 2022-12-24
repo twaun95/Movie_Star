@@ -17,10 +17,9 @@ android {
         versionCode = Configs.VERSION_CODE
         versionName = Configs.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
 
-        defaultConfig{
-            buildConfigField("String", "API_KEY", gradleLocalProperties(rootDir).getProperty("api_key"))
-        }
+        buildConfigField("String", "API_KEY", gradleLocalProperties(rootDir).getProperty("api_key"))
     }
 
     buildTypes {
@@ -47,6 +46,7 @@ android {
 dependencies {
 
     // Google
+    implementation(AndroidX.MULTI_DEX)
     implementation(AndroidX.ACTIVITY)
     implementation(AndroidX.FRAGMENT)
     implementation(AndroidX.APP_COMPAT)

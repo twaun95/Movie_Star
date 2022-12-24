@@ -15,7 +15,7 @@ object Versions {
 
     // AndroidX
     const val SWIPE_LAYOUT = "1.1.0"
-
+    const val MULTI_DEX = "2.0.1"
 
     // Google
     const val HILT = "2.40.5"
