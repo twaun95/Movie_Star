@@ -17,13 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editText_search"
                 android:layout_width="500dp"
                 android:layout_height="0dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:hint="영화 제목을 입력해주세요."
+                android:paddingLeft="15dp"
+                android:imeOptions="actionSearch"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
