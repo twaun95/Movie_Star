@@ -2,8 +2,8 @@ package com.twaun95.moviestar.presentation.ui.main
 
 import androidx.activity.viewModels
 import com.twaun95.moviestar.R
-import com.twaun95.moviestar.application.Logger
 import com.twaun95.moviestar.databinding.ActivityMainBinding
+import com.twaun95.moviestar.presentation.adapter.MovieListAdapter
 import com.twaun95.moviestar.presentation.adapter.MovieViewPageAdapter
 import com.twaun95.moviestar.presentation.base.BaseActivity
 import com.twaun95.moviestar.presentation.model.Mode
@@ -44,12 +44,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 when(page.itemId) {
                     R.id.page_search -> {
                         binding.viewPager.setCurrentItem(0, false)
-                        viewModel.modeTest.postValue(Mode.SEARCH)
+                        viewModel.viewMode.postValue(Mode.SEARCH)
                         true
                     }
                     R.id.page_bookmark -> {
                         binding.viewPager.setCurrentItem(1, false)
-                        viewModel.modeTest.postValue(Mode.BOOKMARK)
+                        viewModel.viewMode.postValue(Mode.BOOKMARK)
                         true
                     }
                     else -> { false }
