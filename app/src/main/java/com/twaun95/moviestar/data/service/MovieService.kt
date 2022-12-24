@@ -7,10 +7,10 @@ import retrofit2.http.Query
 
 interface MovieService {
 
-    @GET
+    @GET("/")
     suspend fun getMovieWithSearch(
-        @Query("apiKey") apiKey: String,
-        @Query("s") search: String,
-        @Query("page") page: String? = null
+        @Query("apikey") apikey: String,
+        @Query("s") s: String,
+        @Query("page") page: Int? = null
     ) : Response<MovieResponse>
 }

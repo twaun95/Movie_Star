@@ -6,7 +6,6 @@ import com.twaun95.moviestar.application.Logger
 import com.twaun95.moviestar.presentation.model.Mode
 import com.twaun95.moviestar.presentation.ui.main.MainActivityViewModel
 import com.twaun95.moviestar.presentation.view.ToolBar
-import timber.log.Timber
 
 @BindingAdapter("android:visible")
 fun setVisibility(view: View, visible: Boolean) {
@@ -22,6 +21,6 @@ fun setOnChangedMode(view: ToolBar, mode: Mode) {
 fun setOnClickSearch(view: ToolBar, viewModel: MainActivityViewModel) {
     view.searchButton.setOnClickListener {
         Logger.d("setOnClickSearch ${view.searchText.text}")
-        viewModel.search(view.searchText.text.toString())
+        viewModel.searchMovie(view.searchText.text.toString())
     }
 }

@@ -1,7 +1,9 @@
 package com.twaun95.moviestar.data.di
 
 import com.google.gson.GsonBuilder
+import com.twaun95.moviestar.BuildConfig
 import com.twaun95.moviestar.application.Logger
+import com.twaun95.moviestar.data.model.APIKey
 import com.twaun95.moviestar.data.service.MovieService
 import dagger.Module
 import dagger.Provides
@@ -16,7 +18,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "http://www.omdbapi.com/"
+    private const val BASE_URL = "http://www.omdbapi.com"
     private const val TIME_OUT_COUNT : Long = 30
 
     @Provides
@@ -52,11 +54,11 @@ object NetworkModule {
             .build()
     }
 
-//    @Provides
-//    @Singleton
-//    fun getAPIKey(): APIKey {
-//        return APIKey(key = BuildConfig.API_KEY)
-//    }
+    @Provides
+    @Singleton
+    fun getAPIKey(): APIKey {
+        return APIKey(key = BuildConfig.API_KEY)
+    }
 
     @Provides
     @Singleton
