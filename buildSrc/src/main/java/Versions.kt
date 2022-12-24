@@ -34,4 +34,5 @@ object Versions {
     const val TIMBER = "5.0.1"
     const val LOTTIE = "5.2.0"
     const val LEAK_CANARY = "2.10"
+    const val GLIDE = "4.13.2"
 }

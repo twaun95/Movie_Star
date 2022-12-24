@@ -11,7 +11,7 @@ android {
     compileSdk = Configs.COMPILE_SDK
 
     defaultConfig {
-        applicationId = "com.twaun95.moviestar"
+        applicationId = Configs.APPLICATION_ID
         minSdk = Configs.MIN_SDK
         targetSdk = Configs.TARGET_SDK
         versionCode = Configs.VERSION_CODE
@@ -71,4 +71,7 @@ dependencies {
     implementation(Libraries.OKHTTP_LOGGING_INTERCEPTOR)
     implementation(Libraries.TIMBER)
     debugImplementation(Libraries.LEAK_CANARY)
+    implementation(Libraries.GLIDE)
+    implementation(Libraries.GLIDE_COMPILER)
+    implementation(Libraries.GLIDE_OKHTTP)
 }

@@ -40,4 +40,7 @@ object Libraries {
     const val TIMBER                      = "com.jakewharton.timber:timber:${Versions.TIMBER}"
     const val LOTTIE                      = "com.airbnb.android:lottie:${Versions.LOTTIE}"
     const val LEAK_CANARY                 = "com.squareup.leakcanary:leakcanary-android:${Versions.LEAK_CANARY}"
+    const val GLIDE                       = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+    const val GLIDE_COMPILER              = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+    const val GLIDE_OKHTTP                = "com.github.bumptech.glide:okhttp3-integration:${Versions.GLIDE}"
 }

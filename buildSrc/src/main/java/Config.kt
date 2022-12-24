@@ -7,6 +7,7 @@ object Configs {
     const val COMPILE_SDK               = 31
 
     //Android Default Config
+    const val APPLICATION_ID            = "com.twaun95.moviestar"
     const val MIN_SDK                   = 20
     const val TARGET_SDK                = 30
     const val VERSION_CODE              = 1
