@@ -22,8 +22,12 @@ class MainActivityViewModel @Inject constructor(
 
     fun searchMovie(text: String) {
         viewModelScope.launch {
+            startLoading()
+
             val result = getMovieUseCase(text, 1)
             Logger.d(result)
+
+            stopLoading()
         }
     }
 }
