@@ -62,7 +62,7 @@ class MovieRepositoryImpl @Inject constructor(
     // 페이지 초기화
     private fun initPage(totalCount: Int) {
         totalPage = totalCount/COUNT_PER_PAGE+1
-        currentPage += 1
+        currentPage = 2
 
         Logger.d("totalCount: $totalCount")
         Logger.d("totalPage: $totalPage")

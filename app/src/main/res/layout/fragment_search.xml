@@ -21,17 +21,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp">
 
-            <Button
-                android:id="@+id/btn_nextPage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NextPage"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:id="@+id/text_empty"
                 android:layout_width="0dp"
@@ -52,5 +41,12 @@
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            layout="@layout/view_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:isLoading="@{activityVM.loading}"
+            tools:visibility="gone" />
     </FrameLayout>
 </layout>

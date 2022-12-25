@@ -1,8 +1,11 @@
 package com.twaun95.moviestar.presentation.ui.search
 
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.twaun95.moviestar.R
 import com.twaun95.moviestar.application.Logger
 import com.twaun95.moviestar.databinding.FragmentSearchBinding
@@ -30,14 +33,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
         setRecyclerView()
     }
 
-    override fun setEvent() {
-        super.setEvent()
-
-        binding.btnNextPage.setOnSingleClickListener {
-            activityVM.searchNextPage()
-        }
-    }
-
     override fun setObserver() {
         super.setObserver()
 
@@ -53,25 +48,36 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
     }
 
     private fun setRecyclerView() {
+
         binding.listSearchMovie.apply {
             layoutManager = MovieGridLayoutManager(requireContext())
             adapter = movieSearchedListAdapter.apply {
-                onItemClickListener = { movie, position ->
+                onItemClickListener = { movie, _ ->
                     DialogBookMark.show(
                         parentFragmentManager,
                         if (movie.isBookMarked) DialogBookMark.TYPE.DELETE else DialogBookMark.TYPE.ADD,
                         { }, {
                             activityVM.updateBookMark(movie.isBookMarked, movie)
                             movie.isBookMarked = movie.isBookMarked == false
-//                            movieSearchedListAdapter.notifyItemChanged(position)
                         }
                     )
                 }
             }
+
+            addOnScrollListener(object: RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if(!binding.listSearchMovie.canScrollVertically(DIRECTION_VERTICAL) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        activityVM.searchNextPage()
+                    }
+                }
+            })
         }
     }
 
     companion object {
         fun getInstance() : SearchFragment = SearchFragment()
+
+        private const val DIRECTION_VERTICAL = 1
     }
 }
