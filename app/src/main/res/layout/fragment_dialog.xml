@@ -29,38 +29,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.7">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_top"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@color/white"
-                    app:layout_constraintBottom_toTopOf="@id/gl_top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/tv_title"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:text="TITLE"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHeight_percent="0.8"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/gl_top"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.22" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_middle"
@@ -70,14 +38,14 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/gl_top">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/tv_message"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="MESSAGE"
+                        tools:text="MESSAGE"
                         android:textColor="@color/black"
                         android:textSize="13dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,8 +78,8 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginRight="1dp"
-                        android:text="취소"
-                        android:textColor="@color/black"
+                        android:text="@string/cancel"
+                        android:textColor="@color/white"
                         android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btn_complete"
@@ -127,7 +95,7 @@
                         android:layout_height="0dp"
                         android:layout_marginLeft="1dp"
                         android:text="확인"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

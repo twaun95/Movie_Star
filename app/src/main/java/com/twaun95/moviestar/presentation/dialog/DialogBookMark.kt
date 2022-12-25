@@ -22,11 +22,9 @@ class DialogBookMark(
 
         type.run {
             if (type == TYPE.ADD) {
-                binding.tvTitle.text = ""
                 binding.tvMessage.text = "즐겨찾에 추가하시겠습니까?"
                 binding.btnComplete.text = "즐겨찾기"
             } else {
-                binding.tvTitle.text = ""
                 binding.tvMessage.text = "즐겨찾기에서 제거하시겠습니까?"
                 binding.btnComplete.text = "즐겨찾기 제거"
             }
