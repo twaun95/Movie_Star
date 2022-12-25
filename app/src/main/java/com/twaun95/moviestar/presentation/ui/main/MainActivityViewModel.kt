@@ -32,6 +32,7 @@ class MainActivityViewModel @Inject constructor(
 
     val updatedMoviePosition by lazy { MutableLiveData<Int>() }
 
+    // 검색
     fun searchMovie(text: String) {
         viewModelScope.launch {
             startLoading()
@@ -50,6 +51,7 @@ class MainActivityViewModel @Inject constructor(
         }
     }
 
+    // 검색 다음 페이지 조회
     fun searchNextPage() {
         viewModelScope.launch {
             startLoading()
@@ -60,7 +62,7 @@ class MainActivityViewModel @Inject constructor(
                     _movieList.value += result.data
                 }
                 is Result.Fail -> {
-                    error.postValue("${result.eMessage}")
+                    error.postValue(result.eMessage)
                 }
             }
 
@@ -68,6 +70,7 @@ class MainActivityViewModel @Inject constructor(
         }
     }
 
+    // 즐겨찾기 업데이트
     fun updateBookMark(isBookMarked: Boolean, movieEntity: MovieEntity) {
         updatedMoviePosition.value = movieList.value.indexOf(movieEntity)
         if (isBookMarked) {
