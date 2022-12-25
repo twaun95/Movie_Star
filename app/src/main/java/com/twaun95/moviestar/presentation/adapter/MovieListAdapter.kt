@@ -9,7 +9,7 @@ import com.twaun95.moviestar.databinding.ItemMovieBinding
 import com.twaun95.moviestar.domain.model.MovieEntity
 
 class MovieListAdapter(
-    var onItemClickListener: ((index: Int)->Unit)? = null
+    var onItemClickListener: ((movie: MovieEntity, position: Int)->Unit)? = null
 ) : ListAdapter<MovieEntity, MovieListAdapter.MovieViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -17,7 +17,7 @@ class MovieListAdapter(
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        return holder.bind(getItem(position)){ onItemClickListener?.invoke(position) }
+        return holder.bind(getItem(position)){ onItemClickListener?.invoke(getItem(position), position) }
     }
 
     companion object {
@@ -27,7 +27,7 @@ class MovieListAdapter(
             }
 
             override fun areItemsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
-                return oldItem.title == newItem.title
+                return (oldItem.title == newItem.title) && (oldItem.isBookMarked == newItem.isBookMarked)
             }
         }
     }
@@ -40,7 +40,7 @@ class MovieListAdapter(
             onClickListener: (()->Unit)? = null
         ) {
             binding.data = data
-            binding.buttonItem.setOnClickListener {
+            binding.imageBookmark.setOnClickListener {
                 onClickListener?.invoke()
             }
         }
