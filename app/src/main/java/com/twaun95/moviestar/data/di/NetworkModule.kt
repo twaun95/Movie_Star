@@ -56,7 +56,10 @@ object NetworkModule {
     @Provides
     @Singleton
     fun getAPIKey(): APIKey {
-        return APIKey(key = BuildConfig.API_KEY)
+//        return APIKey(key = BuildConfig.API_KEY)
+
+//        숨겨야하지만 테스트 제공을 위해 직접 작성.
+        return APIKey(key = "92e32667")
     }
 
     @Provides
