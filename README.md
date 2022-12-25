@@ -2,6 +2,9 @@
 
 그립컴퍼니 사전과제
 
+| 1 | 2 | 3 |
+|:----------:|:----------:|:----------:|
+| <video src="https://user-images.githubusercontent.com/43190509/209478380-64e9d43c-e9e6-426c-b8a0-f8ace050a030.mp4" width="200" height="400" /> | <video src="https://user-images.githubusercontent.com/43190509/209478389-2036b408-5177-4c77-8e9e-bde53efa3ae4.mp4" width="200" height="400"/> | <video src="https://user-images.githubusercontent.com/43190509/209478394-546693bb-2a8d-4828-9b35-4862c0e43d86.mp4" width="200" height="400"/> |
 
 ### 구현 목록
 - 구성
