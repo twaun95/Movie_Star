@@ -1,7 +1,9 @@
 package com.twaun95.moviestar.domain.repository
 
 import com.twaun95.moviestar.domain.model.MovieEntity
+import com.twaun95.moviestar.domain.model.Result
 
 interface MovieRepository {
-    suspend fun getSearchList(search: String, page: Int) : List<MovieEntity>
+    suspend fun getSearchList(search: String) : Result<List<MovieEntity>>
+    suspend fun getNextPage(search: String) : Result<List<MovieEntity>>
 }

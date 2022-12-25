@@ -2,21 +2,22 @@ package com.twaun95.moviestar.presentation.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.twaun95.moviestar.application.Logger
 import com.twaun95.moviestar.domain.model.MovieEntity
+import com.twaun95.moviestar.domain.model.Result
 import com.twaun95.moviestar.domain.usecase.MovieUseCase
+import com.twaun95.moviestar.domain.usecase.NextPageUseCase
 import com.twaun95.moviestar.presentation.base.BaseViewModel
 import com.twaun95.moviestar.presentation.model.Mode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private val getMovieUseCase: MovieUseCase
+    private val getSearchMovieUseCase: MovieUseCase,
+    private val getNextPageUseCase: NextPageUseCase
 ) : BaseViewModel(){
 
     val viewMode by lazy { MutableLiveData<Mode>(Mode.SEARCH) }
@@ -35,16 +36,37 @@ class MainActivityViewModel @Inject constructor(
         viewModelScope.launch {
             startLoading()
 
-            val result = getMovieUseCase("ironman", 1)
-//            _movieList.value = emptyList()
-            _movieList.value = result
-
-//            Logger.d(_movieList.value)
+            val result = getSearchMovieUseCase("ironman")
+            when (result) {
+                is Result.Success -> {
+                    _movieList.value = result.data
+                }
+                is Result.Fail -> {
+                    error.postValue("${result.eMessage}")
+                }
+            }
 
             stopLoading()
         }
     }
 
+    fun searchNextPage() {
+        viewModelScope.launch {
+            startLoading()
+
+            val result = getNextPageUseCase("ironman")
+            when (result) {
+                is Result.Success -> {
+                    _movieList.value += result.data
+                }
+                is Result.Fail -> {
+                    error.postValue("${result.eMessage}")
+                }
+            }
+
+            stopLoading()
+        }
+    }
 
     fun updateBookMark(isBookMarked: Boolean, movieEntity: MovieEntity) {
         updatedMoviePosition.value = movieList.value.indexOf(movieEntity)

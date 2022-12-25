@@ -10,6 +10,7 @@ import com.twaun95.moviestar.presentation.adapter.MovieGridLayoutManager
 import com.twaun95.moviestar.presentation.adapter.MovieListAdapter
 import com.twaun95.moviestar.presentation.base.BaseFragment
 import com.twaun95.moviestar.presentation.dialog.DialogBookMark
+import com.twaun95.moviestar.presentation.extensions.setOnSingleClickListener
 import com.twaun95.moviestar.presentation.ui.main.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -27,6 +28,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
 
         binding.activityVM = this.activityVM
         setRecyclerView()
+    }
+
+    override fun setEvent() {
+        super.setEvent()
+
+        binding.btnNextPage.setOnSingleClickListener {
+            activityVM.searchNextPage()
+        }
     }
 
     override fun setObserver() {

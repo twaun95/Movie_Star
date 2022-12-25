@@ -6,6 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.twaun95.moviestar.R
 import com.twaun95.moviestar.application.Logger
@@ -28,6 +29,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         initViewPager()
         initBottomNavigation()
+    }
+
+    override fun setObserver() {
+        super.setObserver()
+
+        viewModel.error.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initViewPager() {
