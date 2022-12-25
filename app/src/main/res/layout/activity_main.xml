@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="activity"
+            type="com.twaun95.moviestar.presentation.ui.main.MainActivity" />
         <variable
             name="viewModel"
             type="com.twaun95.moviestar.presentation.ui.main.MainActivityViewModel" />
@@ -24,7 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:onChangedMode="@{viewModel.viewMode}"
-                android:onSearch="@{viewModel}"
+                android:onSearch="@{activity}"
+                android:onKeyBoardSearch="@{activity}"
                 app:layout_constraintBottom_toTopOf="@id/viewPager"
                 app:layout_constraintTop_toTopOf="parent" />
 

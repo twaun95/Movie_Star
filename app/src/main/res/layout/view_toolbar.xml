@@ -24,6 +24,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:hint="영화 제목을 입력해주세요."
+                android:singleLine="true"
                 android:paddingLeft="15dp"
                 android:imeOptions="actionSearch"
                 app:layout_constraintBottom_toBottomOf="parent"

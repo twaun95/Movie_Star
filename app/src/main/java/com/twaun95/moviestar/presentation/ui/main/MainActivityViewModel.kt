@@ -25,6 +25,12 @@ class MainActivityViewModel @Inject constructor(
     val movieList: StateFlow<List<MovieEntity>>
         get() = _movieList
 
+    private val _movieBookMarkList = MutableStateFlow(emptyList<MovieEntity>())
+    val movieBookMarkList: StateFlow<List<MovieEntity>>
+        get() = _movieBookMarkList
+
+    val updatedMoviePosition by lazy { MutableLiveData<Int>() }
+
     fun searchMovie(text: String) {
         viewModelScope.launch {
             startLoading()
@@ -33,9 +39,19 @@ class MainActivityViewModel @Inject constructor(
 //            _movieList.value = emptyList()
             _movieList.value = result
 
-            Logger.d(_movieList.value)
+//            Logger.d(_movieList.value)
 
             stopLoading()
+        }
+    }
+
+
+    fun updateBookMark(isBookMarked: Boolean, movieEntity: MovieEntity) {
+        updatedMoviePosition.value = movieList.value.indexOf(movieEntity)
+        if (isBookMarked) {
+            _movieBookMarkList.value = _movieBookMarkList.value.minusElement(movieEntity)
+        } else {
+            _movieBookMarkList.value = _movieBookMarkList.value.plusElement(movieEntity)
         }
     }
 }

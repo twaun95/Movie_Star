@@ -1,12 +1,13 @@
 package com.twaun95.moviestar.presentation.adapter
 
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.twaun95.moviestar.R
-import com.twaun95.moviestar.application.Logger
 import com.twaun95.moviestar.presentation.model.Mode
+import com.twaun95.moviestar.presentation.ui.main.MainActivity
 import com.twaun95.moviestar.presentation.ui.main.MainActivityViewModel
 import com.twaun95.moviestar.presentation.view.ToolBar
 
@@ -21,10 +22,20 @@ fun setOnChangedMode(view: ToolBar, mode: Mode) {
 }
 
 @BindingAdapter("android:onSearch")
-fun setOnClickSearch(view: ToolBar, viewModel: MainActivityViewModel) {
+fun setOnClickSearch(view: ToolBar, activity: MainActivity) {
     view.searchButton.setOnClickListener {
-        Logger.d("setOnClickSearch ${view.searchText.text}")
-        viewModel.searchMovie(view.searchText.text.toString().trim())
+        activity.searchMovie(view.searchText)
+    }
+}
+
+@BindingAdapter("android:onKeyBoardSearch")
+fun setOnKeyBoardSearch(view: ToolBar, activity: MainActivity) {
+    view.searchText.setOnEditorActionListener { v, actionId, event ->
+        when (actionId) {
+            EditorInfo.IME_ACTION_SEARCH -> { activity.searchMovie(v) }
+            else -> {}
+        }
+        true
     }
 }
 

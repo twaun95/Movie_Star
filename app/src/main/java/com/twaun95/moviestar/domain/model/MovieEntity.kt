@@ -6,5 +6,5 @@ data class MovieEntity(
     val imdbID: String,
     val type: String,
     val poster: String,
-    val isBookMarked: Boolean = false
+    var isBookMarked: Boolean = false
 )

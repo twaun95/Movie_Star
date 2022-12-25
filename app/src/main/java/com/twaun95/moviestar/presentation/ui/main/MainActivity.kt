@@ -1,7 +1,14 @@
 package com.twaun95.moviestar.presentation.ui.main
 
+import android.graphics.Rect
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.viewModels
 import com.twaun95.moviestar.R
+import com.twaun95.moviestar.application.Logger
 import com.twaun95.moviestar.databinding.ActivityMainBinding
 import com.twaun95.moviestar.presentation.adapter.MovieListAdapter
 import com.twaun95.moviestar.presentation.adapter.MovieViewPageAdapter
@@ -16,18 +23,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun initView() {
         super.initView()
 
+        binding.activity = this
         binding.viewModel = this.viewModel
 
         initViewPager()
         initBottomNavigation()
-    }
-
-    override fun setEvent() {
-        super.setEvent()
-    }
-
-    override fun setObserver() {
-        super.setObserver()
     }
 
     private fun initViewPager() {
@@ -56,5 +56,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 }
             }
         }
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            val v = currentFocus
+            if (v is EditText) {
+                val outRect = Rect()
+                v.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    v.clearFocus()
+                    val imm: InputMethodManager =
+                        getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event)
+    }
+
+    fun searchMovie(v: TextView) {
+        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+
+        viewModel.searchMovie(v.text.toString().trim())
     }
 }
