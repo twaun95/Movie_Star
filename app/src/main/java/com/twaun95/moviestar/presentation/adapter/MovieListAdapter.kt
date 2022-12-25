@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.twaun95.moviestar.databinding.ItemMovieBinding
 import com.twaun95.moviestar.domain.model.MovieEntity
+import com.twaun95.moviestar.presentation.extensions.setOnSingleClickListener
 
 class MovieListAdapter(
     var onItemClickListener: ((movie: MovieEntity, position: Int)->Unit)? = null
@@ -40,7 +41,7 @@ class MovieListAdapter(
             onClickListener: (()->Unit)? = null
         ) {
             binding.data = data
-            binding.imageBookmark.setOnClickListener {
+            binding.imageBookmark.setOnSingleClickListener {
                 onClickListener?.invoke()
             }
         }

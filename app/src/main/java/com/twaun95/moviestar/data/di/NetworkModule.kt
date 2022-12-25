@@ -33,7 +33,6 @@ object NetworkModule {
                 ).also { response ->
                     Logger.d("Response Code: ${response.code}")
                     Logger.d("Response IsSuccessFul: ${response.isSuccessful}")
-//                    Logger.d("Response Body: ${response.peekBody(4096).string()}")
                 }
             }
             .connectTimeout(TIME_OUT_COUNT, TimeUnit.SECONDS)

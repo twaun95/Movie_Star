@@ -67,6 +67,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
+    // 키보드 바깥 영역 터치 시 키보드 자판 내리기
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
             val v = currentFocus
@@ -84,6 +85,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         return super.dispatchTouchEvent(event)
     }
 
+    // 영화 검색(Binding Adapter)
     fun searchMovie(v: TextView) {
         val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0)

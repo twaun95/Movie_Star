@@ -17,10 +17,12 @@ class MovieRepositoryImpl @Inject constructor(
 
     private var currentPage = 1
     private var totalPage = 0
+    private var searchingText = ""
 
     // 검색 내용 조회
     override suspend fun getSearchList(search: String): Result<List<MovieEntity>> {
-        val response = movieService.getMovieWithSearch(apiKey.key, "ironman")
+        val response = movieService.getMovieWithSearch(apiKey.key, search)
+        searchingText = search
 
         return try {
             if (response.isSuccessful) {
@@ -39,11 +41,11 @@ class MovieRepositoryImpl @Inject constructor(
     }
 
     // 다음 페이지 조회
-    override suspend fun getNextPage(search: String): Result<List<MovieEntity>> {
+    override suspend fun getNextPage(): Result<List<MovieEntity>> {
         // 페이지 초과
         if (totalPage<currentPage) { return Result.Success(emptyList()) }
 
-        val response = movieService.getMovieWithSearch(apiKey.key, "ironman", currentPage)
+        val response = movieService.getMovieWithSearch(apiKey.key, searchingText, currentPage)
 
         return try {
             if (response.isSuccessful) {
@@ -62,11 +64,7 @@ class MovieRepositoryImpl @Inject constructor(
     // 페이지 초기화
     private fun initPage(totalCount: Int) {
         totalPage = totalCount/COUNT_PER_PAGE+1
-        currentPage = 2
-
-        Logger.d("totalCount: $totalCount")
-        Logger.d("totalPage: $totalPage")
-        Logger.d("nextPage: $currentPage")
+        currentPage = INIT_CURRENT_PAGE
     }
 
     // 페이지 업데이트
@@ -74,5 +72,6 @@ class MovieRepositoryImpl @Inject constructor(
 
     companion object {
         private const val COUNT_PER_PAGE = 10
+        private const val INIT_CURRENT_PAGE = 2
     }
 }

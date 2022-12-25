@@ -13,8 +13,6 @@ class MovieUseCase @Inject constructor(
     suspend operator fun invoke(
         search: String
     ): Result<List<MovieEntity>> {
-        return movieRepository.getSearchList(search).also {
-            Logger.d("usecase $it")
-        }
+        return movieRepository.getSearchList(search)
     }
 }

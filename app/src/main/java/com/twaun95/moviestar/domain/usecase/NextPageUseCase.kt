@@ -10,11 +10,7 @@ class NextPageUseCase @Inject constructor(
     private val movieRepository: MovieRepository
 ) {
 
-    suspend operator fun invoke(
-        search: String
-    ): Result<List<MovieEntity>> {
-        return movieRepository.getNextPage(search).also {
-            Logger.d("usecase $it")
-        }
+    suspend operator fun invoke(): Result<List<MovieEntity>> {
+        return movieRepository.getNextPage()
     }
 }

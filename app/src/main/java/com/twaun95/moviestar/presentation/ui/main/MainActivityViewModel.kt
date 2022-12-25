@@ -36,13 +36,13 @@ class MainActivityViewModel @Inject constructor(
         viewModelScope.launch {
             startLoading()
 
-            val result = getSearchMovieUseCase("ironman")
+            val result = getSearchMovieUseCase(text)
             when (result) {
                 is Result.Success -> {
                     _movieList.value = result.data
                 }
                 is Result.Fail -> {
-                    error.postValue("${result.eMessage}")
+                    error.postValue(result.eMessage)
                 }
             }
 
@@ -54,7 +54,7 @@ class MainActivityViewModel @Inject constructor(
         viewModelScope.launch {
             startLoading()
 
-            val result = getNextPageUseCase("ironman")
+            val result = getNextPageUseCase()
             when (result) {
                 is Result.Success -> {
                     _movieList.value += result.data

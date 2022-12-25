@@ -7,12 +7,16 @@ import com.twaun95.moviestar.presentation.ui.bookmark.BookMarkFragment
 import com.twaun95.moviestar.presentation.ui.search.SearchFragment
 
 class MovieViewPageAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment){
-    override fun getItemCount(): Int = 2
+    override fun getItemCount(): Int = PAGE_COUNT
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> SearchFragment.getInstance()
             else -> BookMarkFragment.getInstance()
         }
+    }
+
+    companion object {
+        private const val PAGE_COUNT = 2
     }
 }
