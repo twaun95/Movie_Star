@@ -1,4 +1,4 @@
-package com.twaun95.moviestar.data.model
+package com.twaun95.moviestar.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 import com.twaun95.moviestar.domain.model.MovieEntity

@@ -1,10 +1,9 @@
 package com.twaun95.moviestar.data.di
 
 import com.google.gson.GsonBuilder
-import com.twaun95.moviestar.BuildConfig
 import com.twaun95.moviestar.application.Logger
-import com.twaun95.moviestar.data.model.APIKey
-import com.twaun95.moviestar.data.service.MovieService
+import com.twaun95.moviestar.data.remote.model.APIKey
+import com.twaun95.moviestar.data.remote.service.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
