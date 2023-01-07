@@ -57,9 +57,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
                         parentFragmentManager,
                         if (movie.isBookMarked) DialogBookMark.TYPE.DELETE else DialogBookMark.TYPE.ADD,
                         { }, {
-
                             activityVM.addBookMarkMovie(movie)
-
                             activityVM.updateBookMark(movie.isBookMarked, movie)
                             movie.isBookMarked = movie.isBookMarked == false
                         }

@@ -29,6 +29,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         initViewPager()
         initBottomNavigation()
+        viewModel.getBookMarkMovies()
     }
 
     override fun setObserver() {
@@ -52,16 +53,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             setOnItemSelectedListener { page ->
                 when(page.itemId) {
                     R.id.page_search -> {
-                        binding.viewPager.setCurrentItem(0, false)
+                        binding.viewPager.setCurrentItem(MovieViewPageAdapter.ITEM_SEARCH, false)
                         viewModel.viewMode.postValue(Mode.SEARCH)
                         true
                     }
                     R.id.page_bookmark -> {
-                        binding.viewPager.setCurrentItem(1, false)
+                        binding.viewPager.setCurrentItem(MovieViewPageAdapter.ITEM_BOOKMARK, false)
                         viewModel.viewMode.postValue(Mode.BOOKMARK)
-
-                        viewModel.getBookMarkMovies()
-
                         true
                     }
                     else -> { false }

@@ -49,9 +49,7 @@ class BookMarkFragment : BaseFragment<FragmentBookmarkBinding, BookMarkFragmentV
                         parentFragmentManager,
                         DialogBookMark.TYPE.DELETE,
                         {}, {
-
                             activityVM.removeBookMark(movie)
-
                             activityVM.updateBookMark(true, movie)
                             movie.isBookMarked = false
                             movieBookMarkedListAdapter.notifyItemChanged(position)

@@ -18,5 +18,7 @@ class MovieViewPageAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fr
 
     companion object {
         private const val PAGE_COUNT = 2
+        const val ITEM_SEARCH = 0
+        const val ITEM_BOOKMARK = 1
     }
 }

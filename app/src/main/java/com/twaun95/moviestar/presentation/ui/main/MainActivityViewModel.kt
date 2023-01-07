@@ -87,17 +87,16 @@ class MainActivityViewModel @Inject constructor(
     }
 
     fun getBookMarkMovies() {
-        Logger.d("getBookMarkMovies")
         viewModelScope.launch {
             bookMarkMovieRepository.getMovies().collect {
                 Logger.d(it)
+                _movieBookMarkList.value = it
             }
         }
     }
 
     fun addBookMarkMovie(movieEntity: MovieEntity) {
         viewModelScope.launch {
-            startLoading()
             bookMarkMovieRepository.addMovie(
                 BookMarkMovieEntity(
                     null,
@@ -108,13 +107,12 @@ class MainActivityViewModel @Inject constructor(
                     poster = movieEntity.poster
                 )
             )
-            stopLoading()
         }
     }
 
     fun removeBookMark(movieEntity: MovieEntity) {
         viewModelScope.launch {
-            bookMarkMovieRepository.removeMovie("tt0382268")
+            bookMarkMovieRepository.removeMovie(movieEntity.imdbID)
         }
     }
 }
