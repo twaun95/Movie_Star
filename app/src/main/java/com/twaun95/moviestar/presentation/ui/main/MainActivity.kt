@@ -59,6 +59,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     R.id.page_bookmark -> {
                         binding.viewPager.setCurrentItem(1, false)
                         viewModel.viewMode.postValue(Mode.BOOKMARK)
+
+                        viewModel.getBookMarkMovies()
+
                         true
                     }
                     else -> { false }

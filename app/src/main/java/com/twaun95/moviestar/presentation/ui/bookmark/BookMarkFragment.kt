@@ -12,6 +12,7 @@ import com.twaun95.moviestar.presentation.base.BaseFragment
 import com.twaun95.moviestar.presentation.dialog.DialogBookMark
 import com.twaun95.moviestar.presentation.ui.main.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -48,6 +49,9 @@ class BookMarkFragment : BaseFragment<FragmentBookmarkBinding, BookMarkFragmentV
                         parentFragmentManager,
                         DialogBookMark.TYPE.DELETE,
                         {}, {
+
+                            activityVM.removeBookMark(movie)
+
                             activityVM.updateBookMark(true, movie)
                             movie.isBookMarked = false
                             movieBookMarkedListAdapter.notifyItemChanged(position)
