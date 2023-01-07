@@ -74,4 +74,9 @@ dependencies {
     implementation(Libraries.GLIDE)
     implementation(Libraries.GLIDE_COMPILER)
     implementation(Libraries.GLIDE_OKHTTP)
+
+
+    implementation("androidx.room:room-common:2.4.3")
+    implementation("androidx.room:room-ktx:2.4.3")
+    kapt("androidx.room:room-compiler:2.4.3")
 }
